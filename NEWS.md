@@ -1,7 +1,7 @@
-Version 0.1-1 (2016-02-12)
-===
+# wrswoR.benchmark 0.2 (2017-08-21)
 
-- Download data from GitHub, once per session.
+- Results for up to n = 10⁷.
+- New `timing_sort` dataset.
 
 
 Version 0.1 (2016-02-09)

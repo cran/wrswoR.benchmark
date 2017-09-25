@@ -1,5 +1,5 @@
 PACKAGE_NAME <- methods::getPackageName()
-PACKAGE_VERSION <- "0.1"
+PACKAGE_VERSION <- "0.1-4"
 
 auto_extdata <-
   function (assign.env = parent.frame())
@@ -73,6 +73,6 @@ read_rds(
     paste0("https://raw.githubusercontent.com/krlmlr/", PACKAGE_NAME, "/v",
            PACKAGE_VERSION, "/inst/extdata"),
     c("break_even.rds", "p_values_7.rds", "p_values_agg_agg.rds",
-      "p_values_agg.rds", "timings.rds")
+      "p_values_agg.rds", "timings.rds", "timings_sort.rds")
   )
 )
