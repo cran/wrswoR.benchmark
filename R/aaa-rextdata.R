@@ -26,8 +26,22 @@ read_rds <-
       lazyeval::lazy_(bquote({
         f <- tempfile("rextdata", fileext = ".rds")
         on.exit(unlink(f))
-        curl::curl_download(.(dot), f)
-        readRDS(f)
+        path <- .(dot)
+        tryCatch(
+          {
+            curl::curl_download(path, f)
+            data <- readRDS(f)
+            if (requireNamespace("tibble", quietly = TRUE)) {
+              tibble::as_tibble(data)
+            } else {
+              as.data.frame(data)
+            }
+          },
+          error = function(e) {
+            message("Could not download ", path)
+            data.frame()
+          }
+        )
       }), baseenv())
     })
     delayed_assign_(.dots = dots_expr, assign.env = assign.env)
